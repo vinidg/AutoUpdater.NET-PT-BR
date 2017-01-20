@@ -119,7 +119,9 @@ namespace AutoUpdaterDotNET
 
             backgroundWorker.RunWorkerAsync();
         }
-
+        ///<summary>
+        ///     Desativa o skip ao veirificar se estiver como true no registro, uso ele pra quando fechar o sistema a chamada de atualizacao volte a funcionar
+        ///</summary>
         public static void disableSkip()
         {
             RegistryKey updateKey = Registry.CurrentUser.CreateSubKey(AutoUpdater.RegistryLocation);
