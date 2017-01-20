@@ -1,5 +1,5 @@
 # AutoUpdater.NET PT-BR
-AutoUpdater.NET : Auto update library for VB.NET and C# Developer. PT-BR
+AutoUpdater.NET : Auto update library for VB.NET and C# Developer. Tradução PT-BR
 
 #Changes
 Fiz o clone para alterar as variáveis para pt-br e alguns detalhes necessários para meus sistemas.
