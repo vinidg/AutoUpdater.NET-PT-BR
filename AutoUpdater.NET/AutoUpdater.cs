@@ -38,6 +38,8 @@ namespace AutoUpdaterDotNET
     /// </summary>
     public static class AutoUpdater
     {
+        internal static bool _showed = false;
+
         internal static String ChangeLogURL;
 
         internal static String DownloadURL;
@@ -109,15 +111,15 @@ namespace AutoUpdaterDotNET
         /// <param name="appCast">URL of the xml file that contains information about latest version of the application.</param>
         public static void Start(String appCast)
         {
-            AppCastURL = appCast;
+                AppCastURL = appCast;
 
-            IsWinFormsApplication = Application.MessageLoop;
+                IsWinFormsApplication = Application.MessageLoop;
 
-            var backgroundWorker = new BackgroundWorker();
+                var backgroundWorker = new BackgroundWorker();
 
-            backgroundWorker.DoWork += BackgroundWorkerDoWork;
+                backgroundWorker.DoWork += BackgroundWorkerDoWork;
 
-            backgroundWorker.RunWorkerAsync();
+                backgroundWorker.RunWorkerAsync();
         }
         ///<summary>
         ///     Desativa o skip ao veirificar se estiver como true no registro, uso ele pra quando fechar o sistema a chamada de atualizacao volte a funcionar
@@ -314,9 +316,12 @@ namespace AutoUpdaterDotNET
 
         private static void ShowUI()
         {
-            var updateForm = new UpdateForm();
+            if(!_showed){
+                _showed = true;
+                var updateForm = new UpdateForm();
 
-            updateForm.ShowDialog();
+                updateForm.ShowDialog();
+            }
         }
 
         private static Attribute GetAttribute(Assembly assembly, Type attributeType)

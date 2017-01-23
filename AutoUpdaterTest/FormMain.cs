@@ -20,7 +20,7 @@ namespace AutoUpdaterTest
 
             //If you want to open download page when user click on download button uncomment below line.
  
-            //AutoUpdater.OpenDownloadPage = true;
+            AutoUpdater.OpenDownloadPage = true;
 
             //Don't want user to select remind later time in AutoUpdater notification window then uncomment 3 lines below so default remind later time will be set to 2 days.
 
@@ -33,6 +33,7 @@ namespace AutoUpdaterTest
             //AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;
 
             //AutoUpdater.Start("http://rbsoft.org/updates/right-click-enhancer.xml");
+            Timer();
         }
 
         private void AutoUpdaterOnCheckForUpdateEvent(UpdateInfoEventArgs args)
@@ -86,6 +87,19 @@ namespace AutoUpdaterTest
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             AutoUpdater.disableSkip();
+        }
+        public void Timer()
+        {
+            timer1.Stop();
+            timer1.Interval = 5000;
+            timer1.Tick += new EventHandler(timer1_Tick);
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            AutoUpdater.CurrentCulture = CultureInfo.CreateSpecificCulture("pt");
+            AutoUpdater.Start("http://rbsoft.org/updates/right-click-enhancer.xml");
         }
     }
 }

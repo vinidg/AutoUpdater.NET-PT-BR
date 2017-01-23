@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.buttonCheckForUpdate = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // buttonCheckForUpdate
@@ -40,6 +42,10 @@
             this.buttonCheckForUpdate.Text = "Check for update";
             this.buttonCheckForUpdate.UseVisualStyleBackColor = true;
             this.buttonCheckForUpdate.Click += new System.EventHandler(this.buttonCheckForUpdate_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FormMain
             // 
@@ -61,5 +67,6 @@
         #endregion
 
         private System.Windows.Forms.Button buttonCheckForUpdate;
+        private System.Windows.Forms.Timer timer1;
     }
 }
